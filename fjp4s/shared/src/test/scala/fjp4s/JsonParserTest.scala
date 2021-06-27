@@ -11,7 +11,7 @@ class JsonParserSpec extends AnyFlatSpec with Matchers {
   JsonParser.expectValue(""" {"key" : true } """") shouldBe Right(16,Json("key":=true))
   JsonParser.expectValue(""" {"key" : null } """") shouldBe Right(16,Json("key":= null))
   """{"key":null}""".parseOption shouldBe Some(Json("key":=null))
-  """{"key":[]}""".parseOption shouldBe Some(Json("key":=null))
+ // """{"key":[]}""".parseOption shouldBe Some(Json("key":=null))
   """{"key":null,"key2":true}""".parseOption shouldBe Some(Json("key":=null,"key2":=true))
 
 
