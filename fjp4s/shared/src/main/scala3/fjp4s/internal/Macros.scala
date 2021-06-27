@@ -5,7 +5,7 @@ import scala.compiletime.{constValue, erasedValue, summonFrom,summonAll}
 object Macros {
   inline def summonEncoder[T]: EncodeJson[T] =
     summonFrom {
-      case x: Mirror.ProductOf[T] => println(s"Debug: summonFrom $x");Macros.deriveEncoder[T]
+      case x: Mirror.ProductOf[T] => Macros.deriveEncoder[T]
       case  x: EncodeJson[T] => x
 
     }
