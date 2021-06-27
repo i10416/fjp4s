@@ -2,7 +2,7 @@ import Dependencies._
 val scala3Version = "3.0.0"
 val scala2Version = "2.13.6"
 
-ThisBuild / homepage := Some(url("https://github.com/ItoYo16u/..."))
+ThisBuild / homepage := Some(url("https://github.com/ItoYo16u/fjp4s"))
 ThisBuild / description := "A functional json parser library written in Scala 3 inspired by argonaut."
 ThisBuild / version := "0.1.0"
 ThisBuild / semanticdbEnabled := true
