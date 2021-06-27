@@ -16,5 +16,14 @@ lazy val root = project
     scalaVersion := scala3Version,
     scalacOptions ++= Seq("-Ywarn-unused-import", "-Ywarn-adapted-args"),
     libraryDependencies ++= deps,
-    crossScalaVersions := Seq(scala3Version, scala2Version)
+    crossScalaVersions := Seq(scala3Version, scala2Version),
+    Def.settings(
+      Seq(Compile,Test).map {scope =>
+        (scope / unmanagedSourceDirectories) += {
+          val base = baseDirectory.value.getParentFile / "shared" / "src"
+          val dir = base / Defaults.nameForSrc(scope.name)
+          dir / "scala3"
+        }
+      }
+    )
   )

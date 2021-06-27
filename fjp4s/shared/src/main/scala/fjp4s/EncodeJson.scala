@@ -20,7 +20,7 @@ trait EncodeJsons {
   
   given EncodeJson[Int] with 
     def encode(a:Int) = JNumber(MyJsons.MyInt(a))
-  given EncodeJson[Boolean] with
+  given EncodeJson[Boolean]  with
     def encode(a:Boolean) = JBool(a)
 
   given EncodeJson[Null] with
