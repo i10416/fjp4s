@@ -2,6 +2,9 @@ package fjp4s
 package internal
 import scala.deriving.Mirror
 import scala.compiletime.{constValue, erasedValue, summonFrom,summonAll}
+import scala.quoted.Type
+import scala.quoted.Quotes
+import scala.quoted.Expr
 object Macros {
   inline def summonEncoder[T]: EncodeJson[T] =
     summonFrom {

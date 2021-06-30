@@ -4,6 +4,7 @@ import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 import scala.language.implicitConversions
 
+
 class MacroSpec extends AnyFlatSpec with Matchers {
   import EncodeJson._
   final case class Address(name:String,code:Int)
@@ -15,5 +16,4 @@ class MacroSpec extends AnyFlatSpec with Matchers {
   addressJson shouldBe Json("name":="aaa","code":=2)
   val personJ = Person("taro",Address("aaa",2)).asJson
   personJ.isInstanceOf[Json] shouldBe true
-
 }
