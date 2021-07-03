@@ -4,7 +4,7 @@ sealed abstract class Json extends Product with Serializable {
   def arrayOrObject[X](or: => X, obj: JsonObject => X) = this match {
     case JNull | JBool(_) | JNumber(_) | JString(_) => or
     case JObject(o)                                 => obj(o)
-    case JArray(a) => ???
+    case JArray(a)                                  => ???
   }
   def string: Option[String] = this match {
     case JNull      => None
@@ -12,7 +12,7 @@ sealed abstract class Json extends Product with Serializable {
     case JNumber(n) => None
     case JString(s) => Some(s)
     case JObject(o) => None
-    case JArray(a) =>  None
+    case JArray(a)  => None
   }
   def number: Option[MyJsons.MyJsonNumber] = this match {
     case JNull      => None
@@ -20,7 +20,7 @@ sealed abstract class Json extends Product with Serializable {
     case JNumber(n) => Some(n)
     case JString(s) => None
     case JObject(o) => None
-    case JArray(a) => None
+    case JArray(a)  => None
   }
 
   def obj: Option[JsonObject] = arrayOrObject(None, Some(_))
