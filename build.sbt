@@ -1,14 +1,17 @@
 import Dependencies._
 
-val scala3Version = "3.0.0"
-val scala2Version = "2.13.6"
+val scala3Version = "3.1.2"
+val scala2Version = "2.13.8"
 
-ThisBuild / homepage := Some(url("https://github.com/ItoYo16u/fjp4s"))
-ThisBuild / organization := "dev.110416"
-ThisBuild / description := "A functional json parser library written in Scala 3 inspired by argonaut."
-ThisBuild / version := "0.1.0-SNAPSHOT"
-ThisBuild / semanticdbEnabled := true
-ThisBuild / semanticdbVersion := scalafixSemanticdb.revision
+inThisBuild(
+  Seq(
+    homepage := Some(url("https://github.com/i10416/fjp4s")),
+    organization := "dev.i10416",
+    description := "A functional json parser library written in Scala 3 inspired by argonaut.",
+    version := "0.1.0-SNAPSHOT"
+  )
+)
+
 lazy val cross =
   crossProject(JSPlatform, JVMPlatform)
     .crossType(CrossType.Full)
@@ -18,10 +21,11 @@ lazy val cross =
       // githubOwner := "ItoYo16u",
       // githubRepository := "fjp4s",
       version := version.value,
+      semanticdbEnabled := true,
+      semanticdbVersion := scalafixSemanticdb.revision,
       scalaVersion := scala3Version,
       scalacOptions ++= Seq(
-        "-Ywarn-unused-import",
-        "-Ywarn-adapted-args",
+        "-feature",
         "-deprecation"
       ),
       libraryDependencies ++= deps,
