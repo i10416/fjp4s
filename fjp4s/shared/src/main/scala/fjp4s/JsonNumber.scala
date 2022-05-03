@@ -1,17 +1,15 @@
 package fjp4s
 
-object MyJsons {
+object MyJsons:
   type MyJsonNumber = Int | Double | Float
   opaque type MyInt <: MyJsonNumber = Int
   opaque type MyDouble <: MyJsonNumber = Double
   opaque type MyFloat <: MyJsonNumber = Float
-  object MyInt {
+  object MyInt:
     def apply(i: Int): MyInt = i
-  }
 
-  trait ToBigDecimal[T <: MyJsonNumber] {
+  trait ToBigDecimal[T <: MyJsonNumber]:
     def apply(i: T): BigDecimal
-  }
   given ToBigDecimal[Int] with
     def apply(i: Int) = BigDecimal(i)
 
@@ -21,4 +19,3 @@ object MyJsons {
   extension [T <: MyJsonNumber: ToBigDecimal](i: T)
     def asJson: Json = JNumber(i)
     def toBigDecimal = summon[ToBigDecimal[T]].apply(i)
-}
