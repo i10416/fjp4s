@@ -1,7 +1,6 @@
 import Dependencies._
 
 val scala3Version = "3.1.2"
-val scala2Version = "2.13.8"
 
 inThisBuild(
   Seq(
@@ -29,7 +28,6 @@ lazy val cross =
         "-deprecation"
       ),
       libraryDependencies ++= deps,
-      crossScalaVersions := Seq(scala3Version, scala2Version),
       Def.settings(
         Seq(Compile, Test).map { scope =>
           (scope / unmanagedSourceDirectories) += {
